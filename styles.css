@@ -59,3 +59,10 @@ body {
 #topo img {
   width: 300px;
 }
+
+/* Botão concluido */
+.concluida {
+  text-decoration: line-through;
+  opacity: 0.6;
+  transition: 0.2s ease;
+}
