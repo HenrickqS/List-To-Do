@@ -4,10 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
-    <title>Document</title>
+    <title>Lista de Tarefas</title>
   </head>
-  <body>
+  <body class="dark">
     <div id="container">
+      <!-- Toggle Dark/Light -->
+      <button
+        id="toggleTema"
+        style="position: fixed; top: 20px; right: 20px; z-index: 1000"
+      >
+        🌙
+      </button>
+
+      <!-- Tela inicial -->
       <div id="topo">
         <img src="./assets/avatar.png" alt="Avatar" />
         <h1>Seja Bem Vindo! A sua lista de Tarefas</h1>
@@ -15,13 +24,30 @@
         <button id="botao">Começar Lista</button>
       </div>
 
+      <!-- Lista e timer -->
       <div id="listaContainer" style="display: none">
-        <button id="voltar">Voltar</button>
-        <input type="text" id="input" placeholder="Digite sua tarefa" />
-        <button id="adicionar">Adicionar</button>
-        <ul id="lista">
-          <li></li>
-        </ul>
+        <!-- Seção de tarefas -->
+        <div id="tarefasSection">
+          <input type="text" id="input" placeholder="Digite sua tarefa" />
+          <button id="adicionar">Adicionar</button>
+          <ul id="lista"></ul>
+        </div>
+
+        <!-- Seção de timer -->
+        <div id="timerSection" style="margin-top: 20px">
+          <h3>Defina o tempo (em horas):</h3>
+          <input type="number" id="tempoInput" placeholder="Horas" min="0" />
+          <button id="iniciarTimer">Iniciar Timer</button>
+          <div id="timerDisplay" style="margin-top: 10px; font-size: 18px">
+            00:00:00
+          </div>
+          <div id="barraContainer" style="margin-top: 10px">
+            <div id="barraProgresso"></div>
+          </div>
+        </div>
+
+        <!-- Botão voltar -->
+        <button id="voltar" style="margin-top: 15px">Voltar</button>
       </div>
     </div>
     <script src="script.js"></script>

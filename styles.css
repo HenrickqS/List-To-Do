@@ -1,68 +1,225 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* Background */
+/* Cores e variáveis */
+:root {
+  --text-color: #fff;
+  --bg-url: url(./assets/black-theme.png);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(255, 255, 255, 0.1);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+}
+
+body.light {
+  --text-color: #e6e6e6;
+  --bg-url: url(./assets/light-theme.png);
+  --stroke-color: rgba(50, 50, 50, 0.7);
+  --surface-color: rgba(40, 40, 40, 0.5);
+  --surface-color-hover: rgba(60, 60, 60, 0.3);
+  --highlight-color: rgba(80, 80, 80, 0.5);
+}
+
 body {
-  background-image: url(./assets/black-theme.png);
+  background-image: var(--bg-url);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
-  height: 100vh;
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  padding: 20px;
 }
 
-:root {
-  color: white;
-}
-
+/* Container */
 #container {
-  width: 100%;
   max-width: 588px;
-  margin: 56px auto 0px;
+  margin: 0 auto;
   padding: 0 24px;
-  color: white;
 }
-/* Cartao de visitas */
 
+/* Toggle Dark/Light */
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 8px 12px;
+  border-radius: 50%;
+  border: none;
+  background: var(--stroke-color);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+/* Tela inicial */
 #topo {
   text-align: center;
 }
 
 #topo h1 {
-  text-align: center;
-  border: 1px solid black;
-  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
-  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+body.light #topo h1 {
+  background: rgba(30, 30, 30, 0.8);
+  color: #e6e6e6;
 }
 
 #topo p {
-  font-size: 20px;
-  text-align: center;
-  margin-top: 10px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #fff; /* dark mode */
+}
+
+body.light #topo p {
+  color: #bfbfbf; /* light mode escuro */
 }
 
 #topo button {
-  display: flex;
-  margin: 10px 240px;
-  padding: 10px;
-  border: 1px solid black;
+  padding: 10px 20px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(4px);
-  -webkit-background-filter: blur(4px);
-  font-weight: 400;
-  color: white;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+body.light #topo button {
+  background: rgba(30, 30, 30, 0.8);
+  color: #e6e6e6;
 }
 
 #topo img {
   width: 300px;
+  margin-bottom: 15px;
 }
 
-/* Botão concluido */
-.concluida {
+/* Seção de tarefas */
+#tarefasSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+#adicionar {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: var(--stroke-color);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+/* Lista */
+#lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#lista li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: var(--highlight-color);
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+#lista li:hover {
+  background: var(--surface-color-hover);
+}
+
+/* Botão concluir */
+.btn-concluir {
+  background: var(--stroke-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--text-color);
+  padding: 5px 8px;
+  font-weight: bold;
+}
+
+/* Tarefa concluída */
+li.concluida span {
   text-decoration: line-through;
   opacity: 0.6;
   transition: 0.2s ease;
+}
+
+/* Timer */
+#timerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#tempoInput {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  width: 100px;
+}
+
+#iniciarTimer {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: var(--stroke-color);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+/* Barra de progresso */
+#barraContainer {
+  width: 100%;
+  height: 15px;
+  background: var(--stroke-color);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#barraProgresso {
+  width: 0%;
+  height: 100%;
+  background: #4caf50;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+/* Botão voltar */
+#voltar {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: var(--stroke-color);
+  color: var(--text-color);
+  cursor: pointer;
+  margin-top: 15px;
+  width: 100%;
 }
