@@ -1,5 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Background */
 body {
-  background-image: url(./assets/dark-theme.jpg);
+  background-image: url(./assets/black-theme.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: top center;
+  height: 100vh;
+}
+
+:root {
+  color: white;
+}
+
+#container {
+  width: 100%;
+  max-width: 588px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+  color: white;
+}
+/* Cartao de visitas */
+
+#topo {
+  text-align: center;
+}
+
+#topo h1 {
+  text-align: center;
+  border: 1px solid black;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  align-items: center;
+}
+
+#topo p {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+#topo button {
+  display: flex;
+  margin: 10px 240px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-background-filter: blur(4px);
+  font-weight: 400;
+  color: white;
+}
+
+#topo img {
+  width: 300px;
 }
